@@ -1,0 +1,26 @@
+pipeline { 
+    agent any 
+    options {
+        skipStagesAfterUnstable()
+    }
+    stages {
+        stage('Build') { 
+            steps { 
+                echo 'job1' 
+                javac addnumbers.java
+            }
+        }
+        stage('Test'){
+            steps {
+                echo 'job2'
+                java addnumbers
+                 
+            }
+        }
+        stage('Deploy') {
+            steps {
+                echo 'job3'
+            }
+        }
+    }
+}
